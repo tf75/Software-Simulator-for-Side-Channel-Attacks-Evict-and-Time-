@@ -1,0 +1,4 @@
+#!/bin/bash
+for i in {0..1000}; do
+valgrind --tool=lackey --trace-mem=yes --log-file="memorytraces$(date +%Y%m%d-%H%M%S)" ./AES
+done

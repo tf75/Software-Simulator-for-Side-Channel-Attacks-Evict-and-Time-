@@ -8,23 +8,8 @@ import java.util.stream.Collectors;
 class Caculateresults{
 
 
-     /*The 16 list files each outputting results for 0-15 of the plaintext values */
-      ArrayList<File> file1 = new ArrayList<File>();
-      ArrayList<File> file2 = new ArrayList<File>();
-      ArrayList<File> file3 = new ArrayList<File>();
-      ArrayList<File> file4 = new ArrayList<File>();
-      ArrayList<File> file5 = new ArrayList<File>();
-      ArrayList<File> file6 = new ArrayList<File>();
-      ArrayList<File> file7 = new ArrayList<File>();
-      ArrayList<File> file8 = new ArrayList<File>();
-      ArrayList<File> file9 = new ArrayList<File>();
-      ArrayList<File> file10 = new ArrayList<File>();
-      ArrayList<File> file11 = new ArrayList<File>();
-      ArrayList<File> file12 = new ArrayList<File>();
-      ArrayList<File> file13 = new ArrayList<File>();
-      ArrayList<File> file14 = new ArrayList<File>();
-      ArrayList<File> file15 = new ArrayList<File>();
-      ArrayList<File> file16 = new ArrayList<File>();
+    /*The 16 list files each outputting results for 0-15 of the plaintext values */
+    ArrayList<File> filearray = new ArrayList<File>();
 
 	 /*This caculates the results of the equations and is used to print off key values */
 	 List<Integer> results = new ArrayList<Integer>();
@@ -52,170 +37,176 @@ class Caculateresults{
 /*All output files from attacker are read in and processed according to the number following the ! */
 	void sortoutput(){
 	    System.out.println("It will separate files according to plaintext byte number");
-      File dir = new File("/home/tf75/Documents/Master's project/Set Cache/output");
+      File dir = new File("/home/...");
       File[] files = dir.listFiles();
       Arrays.sort(files); /*list.files() does not save files in particular order so this function sorts them numerically */
+      for(int x = 1; x>16; x++){
+        String countnum = Integer.toString(x);
       for(File filename : files){
       	  String name = filename.getName();
       	  int position = name.indexOf( '!' );
       	  name = name.substring(position+1);
+          if(name != countnum){
+            break;
+          }
+          else{
       	  switch(name){
       	  	case "1":
-      	  	     file1.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "2":
-      	  	     file2.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "3":
-      	  	     file3.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "4":
-      	  	     file4.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "5":
-      	  	     file5.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "6":
-      	  	     file6.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "7":
-      	  	     file7.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case  "8":
-      	  	     file8.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "9":
-      	  	     file9.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "10":
-      	  	     file10.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "11":
-      	  	     file11.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "12":
-      	  	     file12.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "13":
-      	  	     file13.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case "14":
-      	  	     file14.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case  "15":
-      	  	     file15.add(filename);
+      	  	     filearray.add(filename);
       	  	     break;
       	  	case  "16":
-      	  	     file16.add(filename);
+      	  	     filearray.add(filename);
                  break;
       	  }
       }
-      gothroughlists();
+      }
+      gothroughlists(x);
+      }
     }
 
 /*This goes through the file lists */
-    void gothroughlists(){
-    	System.out.println("It will go through all the files and find the average time of execution");
-    	 for(int num = 0; num < 16; num++){
+    void gothroughlists(int num){
+    	System.out.println("It will go through all the file ending in" + num + " " + "and find the average time of execution");
     	 	switch(num){
-      	  	case  0:
+      	  	case  1:
                  outputnum = 1;
                  System.out.println("This is the output for attack on key byte 1");
-      	  	     analyse(file1);
-                 file1.clear();
-      	  	     break;
-      	  	case  1:
-                 outputnum = 2;
-                 System.out.println("This is the output for attack on key byte 2");
-      	  	     analyse(file2);
-                 file2.clear();
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  2:
-                 outputnum = 3;
-                 System.out.println("This is the output for attack on key byte 3");
-      	  	     analyse(file3);
-                 file3.clear();
+                 outputnum = 2;
+                 System.out.println("This is the output for attack on key byte 2");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  3:
-                 outputnum = 4;
-                 System.out.println("This is the output for attack on key byte 4");
-      	  	     analyse(file4);
-                 file4.clear();
+                 outputnum = 3;
+                 System.out.println("This is the output for attack on key byte 3");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  4:
-      	  	     outputnum = 5;
-                 System.out.println("This is the output for attack on key byte 5");
-                 analyse(file5);
-                 file5.clear();
+                 outputnum = 4;
+                 System.out.println("This is the output for attack on key byte 4");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  5:
-                 outputnum = 6;
-                 System.out.println("This is the output for attack on key byte 6");
-      	  	     analyse(file6);
-                 file6.clear();
+      	  	     outputnum = 5;
+                 System.out.println("This is the output for attack on key byte 5");
+                 analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  6:
-                 outputnum = 7;
-                 System.out.println("This is the output for attack on key byte 7");
-      	  	     analyse(file7);
-                 file7.clear();
+                 outputnum = 6;
+                 System.out.println("This is the output for attack on key byte 6");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  7:
-                 outputnum = 8;
-                 System.out.println("This is the output for attack on key byte 8");
-      	  	     analyse(file8);
-                 file8.clear();
+                 outputnum = 7;
+                 System.out.println("This is the output for attack on key byte 7");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  8:
-                 outputnum = 9;
-                 System.out.println("This is the output for attack on key byte 9");
-      	  	     analyse(file9);
-                 file9.clear();
+                 outputnum = 8;
+                 System.out.println("This is the output for attack on key byte 8");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  9:
-                 outputnum = 10;
-                 System.out.println("This is the output for attack on key byte 10");
-      	  	     analyse(file10);
-                 file10.clear();
+                 outputnum = 9;
+                 System.out.println("This is the output for attack on key byte 9");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  10:
-                 outputnum = 11;
-                 System.out.println("This is the output for attack on key byte 11");
-      	  	     analyse(file11);
-                 file11.clear();
+                 outputnum = 10;
+                 System.out.println("This is the output for attack on key byte 10");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  11:
-                 outputnum = 12;
-                 System.out.println("This is the output for attack on key byte 12");
-      	  	     analyse(file12);
-                 file12.clear();
+                 outputnum = 11;
+                 System.out.println("This is the output for attack on key byte 11");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  12:
-                 outputnum = 13;
-                 System.out.println("This is the output for attack on key byte 13");
-      	  	     analyse(file13);
-                 file13.clear();
+                 outputnum = 12;
+                 System.out.println("This is the output for attack on key byte 12");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  13:
-                 outputnum = 14;
-                 System.out.println("This is the output for attack on key byte 14");
-      	  	     analyse(file14);
-                 file14.clear();
+                 outputnum = 13;
+                 System.out.println("This is the output for attack on key byte 13");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  14:
-                 outputnum = 15;
-                 System.out.println("This is the output for attack on key byte 15");
-      	  	     analyse(file15);
-                 file15.clear();
+                 outputnum = 14;
+                 System.out.println("This is the output for attack on key byte 14");
+      	  	     analyse(filearray);
+                 filearray.clear();
       	  	     break;
       	  	case  15:
+                 outputnum = 15;
+                 System.out.println("This is the output for attack on key byte 15");
+      	  	     analyse(filearray);
+                 filearray.clear();
+      	  	     break;
+      	  	case  16:
                  outputnum = 16;
                  System.out.println("This is the output for attack on key byte 16");
-      	  	     analyse(file16);
-                 file16.clear();
+      	  	     analyse(filearray);
+                 filearray.clear();
                  break;
       	  }
-      }
       System.out.println("Calculation finished");
    }
 
@@ -443,7 +434,7 @@ class Caculateresults{
        System.out.println("This will now print the file of results that were above average execution time for key bytes");
        int line = 0;
        String printed = "";
-       String fileDir = "/home/tf75/Documents/Master's project/Set Cache/CaculateData/Analysis";
+       String fileDir = "/home..";
        String fileName = "analysis" + outputnum + ".txt";
        File f = new File (fileDir, fileName);
        try{
@@ -545,7 +536,7 @@ class Caculateresults{
        System.out.println("This will now print the file of results that were above average execution time for plaintext");
        int line = 0;
        String printed = "";
-       String fileDir = "/home/tf75/Documents/Master's project/Set Cache/CaculateData/Analysis";
+       String fileDir = "/home/...";
        String fileName = "plainanalysis" + outputnum + ".txt";
        File f = new File (fileDir, fileName);
        try{

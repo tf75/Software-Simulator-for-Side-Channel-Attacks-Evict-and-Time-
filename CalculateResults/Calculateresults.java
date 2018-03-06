@@ -14,6 +14,10 @@ class Caculateresults{
 	 /*This caculates the results of the equations and is used to print off key values */
 	 List<Integer> results = new ArrayList<Integer>();
 
+   /*Used to find AMAT */
+   ArrayList<Integer> hits = new ArrayList<Integer>();
+   ArrayList<Integer> misses = new ArrayList<Integer>();
+
 
 	 int hit = 0; /*These are the int values use to caculate average execution time per candidate key */
 	 int miss = 0;
@@ -39,168 +43,203 @@ class Caculateresults{
 	    System.out.println("It will separate files according to plaintext byte number");
       File dir = new File("/home/...");
       File[] files = dir.listFiles();
+      String name = "";
+      int position = 0;
       Arrays.sort(files); /*list.files() does not save files in particular order so this function sorts them numerically */
       for(int x = 1; x>16; x++){
-        String countnum = Integer.toString(x);
-      for(File filename : files){
-      	  String name = filename.getName();
-      	  int position = name.indexOf( '!' );
-      	  name = name.substring(position+1);
-          if(name != countnum){
-            break;
-          }
-          else{
-      	  switch(name){
-      	  	case "1":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "2":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "3":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "4":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "5":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "6":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "7":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case  "8":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "9":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "10":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "11":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "12":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "13":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case "14":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case  "15":
-      	  	     filearray.add(filename);
-      	  	     break;
-      	  	case  "16":
-      	  	     filearray.add(filename);
-                 break;
-      	  }
-      }
-      }
+          String countnum = Integer.toString(x);
+          for(File filename : files){
+      	      name = filename.getName();
+      	      position = name.indexOf( '!' );
+      	      name = name.substring(position+1);
+              if(name != countnum){
+              }
+              else{
+      	           switch(name){
+      	  	             case "1":
+      	  	             filearray.add(filename);
+                         assert(name == "1");
+                         break;
+      	  	             case "2":
+      	  	             filearray.add(filename);
+                         assert(name == "2");
+                         break;
+      	  	             case "3":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "3");
+                         break;
+      	  	             case "4":
+      	  	             filearray.add(filename);
+                         assert(name == "4");
+                         break;
+      	  	             case "5":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "5");
+                         break;
+      	  	             case "6":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "6");
+                         break;
+      	  	             case "7":
+      	  	             filearray.add(filename);
+                         assert(name == "7");
+                         break;
+      	  	             case  "8":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "8");
+                         break;
+      	  	             case "9":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "9");
+                         break;
+      	  	             case "10":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "10");
+                         break;
+      	  	             case "11":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "11");
+                         break;
+      	  	             case "12":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "12");
+                         break;
+      	  	             case "13":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "13");
+                         break;
+      	  	             case "14":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "14");
+                         break;
+      	  	             case  "15":
+      	  	             filearray.add(filename);
+      	  	             assert(name == "15");
+                         break;
+      	  	             case  "16":
+      	  	             filearray.add(filename);
+                         assert(name == "16");
+                         break;
+                         default: System.err.println("Number of file not recongnised" + " " + filename);
+                                  System.exit(0);
+      	      }
+           }
+           }
       gothroughlists(x);
       }
     }
 
-/*This goes through the file lists */
+    /*This goes through the file list of specific num it will be sequential  */
     void gothroughlists(int num){
     	System.out.println("It will go through all the file ending in" + num + " " + "and find the average time of execution");
     	 	switch(num){
       	  	case  1:
+                 assert(num == 1);
                  outputnum = 1;
                  System.out.println("This is the output for attack on key byte 1");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  2:
+                 assert(num == 2);
                  outputnum = 2;
                  System.out.println("This is the output for attack on key byte 2");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  3:
+                 assert(num == 3);
                  outputnum = 3;
                  System.out.println("This is the output for attack on key byte 3");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  4:
+                 assert(num == 4);
                  outputnum = 4;
                  System.out.println("This is the output for attack on key byte 4");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  5:
+                 assert(num == 5);
       	  	     outputnum = 5;
                  System.out.println("This is the output for attack on key byte 5");
                  analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  6:
+                 assert(num == 6);
                  outputnum = 6;
                  System.out.println("This is the output for attack on key byte 6");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  7:
+                 assert(num == 7);
                  outputnum = 7;
                  System.out.println("This is the output for attack on key byte 7");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  8:
+                 assert(num == 8);
                  outputnum = 8;
                  System.out.println("This is the output for attack on key byte 8");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  9:
+                 assert(num == 9);
                  outputnum = 9;
                  System.out.println("This is the output for attack on key byte 9");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  10:
+                 assert(num == 10);
                  outputnum = 10;
                  System.out.println("This is the output for attack on key byte 10");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  11:
+                 assert(num == 11);
                  outputnum = 11;
                  System.out.println("This is the output for attack on key byte 11");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  12:
+                 assert(num == 12);
                  outputnum = 12;
                  System.out.println("This is the output for attack on key byte 12");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  13:
+                 assert(num == 13);
                  outputnum = 13;
                  System.out.println("This is the output for attack on key byte 13");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  14:
+                assert(num == 14);
                  outputnum = 14;
                  System.out.println("This is the output for attack on key byte 14");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  15:
+                 assert(num == 15);
                  outputnum = 15;
                  System.out.println("This is the output for attack on key byte 15");
       	  	     analyse(filearray);
                  filearray.clear();
       	  	     break;
       	  	case  16:
+                 assert(num == 16);
                  outputnum = 16;
                  System.out.println("This is the output for attack on key byte 16");
       	  	     analyse(filearray);
@@ -211,54 +250,53 @@ class Caculateresults{
    }
 
 /*This analyses the data to find average time of execution */
-   void analyse(ArrayList<File> chosenfile){
-	 int linecount;
-     for (File filename : chosenfile) {
-          if(chosenfile.size() == 0){
+  void analyse(ArrayList<File> chosenfile){
+	  int linecount;
+    int avresult;
+    for(File filename : chosenfile){
+        if(chosenfile.size() == 0){
             /*If nothing in file array then it simply continues */
             continue;
-          }
-     	    linecount = 0;
+        }
+     	  linecount = 0;
       	 try{
           FileReader inputFile = new FileReader(filename);
           BufferedReader bufferReader = new BufferedReader(new FileReader(filename));
           String line;
-           while ((line = bufferReader.readLine()) != null){
-           	linecount++;
-            /*To ensure the first hit and misses aren't read as they are formally part of the attack, please refer to manual */
+          while ((line = bufferReader.readLine()) != null){
+                 	linecount++;
+/*To ensure the first hit and misses aren't read in as they are optimal time data, please refer to manual */
              if(linecount > 5){ /*So preceding optimal time data is not read */
              	  valuesforaverage(line);
              }
-           }
+          }
            bufferReader.close(); // Closes the input stream
-           }
-       catch(IOException e){
-             e.printStackTrace(); //It prints a stack trace for this Throwable object on the error output stream that is the value of the field
-             System.exit(0);
-       }
-     }
+         }
+         catch(IOException e){
+               e.printStackTrace(); //It prints a stack trace for this Throwable object on the error output stream that is the value of the field
+               System.exit(0);
+         }
+    }
      /*To ensure that it only reads file lists with files in them */
-     if(chosenfile.size() > 0){
-      int avresult = getaveragetime();
-      runsecondtime(chosenfile, avresult);
+    if(chosenfile.size() > 0){
+       avresult = getaveragetime();
+       runsecondtime(chosenfile, avresult);
      }
    }
 
 /*This finds the AMAT (Average Memory Access Time) of the file input */
-    int getaveragetime(){
-      ArrayList<Integer> hits = new ArrayList<Integer>();
-      ArrayList<Integer> misses = new ArrayList<Integer>();
+ int getaveragetime(){
       for(int x = 0; x<results.size(); x++){
-        if(x % 2 == 0){
-        	  hits.add(results.get(x));
-        }
-        else{
-        	  misses.add(results.get(x));
-        }
+          if(x % 2 == 0){
+        	   hits.add(results.get(x));
+          }
+          else{
+        	     misses.add(results.get(x));
+          }
       }
 
-       int meanofhit = findmeanofhits(hits);
-       int meanofmisses = findmeanofmisses(misses);
+      int meanofhit = findmeanofhits();
+      int meanofmisses = findmeanofmisses();
 
        /*Average time used to compare to find higher execution times */
        /* Below is AMAT */
@@ -268,10 +306,10 @@ class Caculateresults{
        misses.clear();
        results.clear();
        return average;
-    }
+  }
 
 /*To find the average hit count among the chosen files */
-    int findmeanofhits(ArrayList<Integer> hits){
+    int findmeanofhits(){
          Long value = 0l;
          int count = 0;
          for(int x = 0; x<hits.size(); x++){
@@ -286,7 +324,7 @@ class Caculateresults{
     }
 
 /*To find the average miss count among the chosen file */
-    int findmeanofmisses(ArrayList<Integer> misses){
+    int findmeanofmisses(){
          Long value = 0l;
          int count = 0;
          for(int x = 0; x<misses.size(); x++){
@@ -320,9 +358,9 @@ class Caculateresults{
      /*Each line of the array represents the values 0-255 */
      Long[][] array = new Long[256][2];
      for(int i = 0; i<256;  i++){
-        for(int x = 0; x<2; x++){
+         for(int x = 0; x<2; x++){
             array[i][x] = 0l;
-        }
+         }
      }
      int linecount;
      int count = 0;
@@ -332,7 +370,7 @@ class Caculateresults{
      for (File filename : chosenfile) {
            count++;
            if(chosenfile.size() == 0){
-            continue;
+              continue;
            }
           linecount = 0;
           try{
@@ -340,34 +378,35 @@ class Caculateresults{
             BufferedReader bufferReader = new BufferedReader(new FileReader(filename));
             String line;
             while ((line = bufferReader.readLine()) != null){
-               linecount++;
+                    linecount++;
              /*This reads the first five lines without adding this to the results*/
-              if(linecount > 5){
-                 result_time = valuesfromlines(line, avresult);
-                 if(result_time > 0){
+                    if(linecount > 5){
+                       assert(linecount > 5);
+                       result_time = valuesfromlines(line, avresult);
+                       if(result_time > 0){
                  	/*So the time does not reset back to 0 until it encounter a miss line */
-                    result = new Long(result_time);
-                 }
+                         result = new Long(result_time);
+                       }
                  /*Will return 256 until it finds a line with key value */
-                 result_key = checkkey(line);
-                 if(result_key <= 255){
-                    array[result_key][0] += result;
-                    array[result_key][1] += 1l;
-                 }
-              }
-            }
-            bufferReader.close(); // Closes the input stream
-          }
-          catch(IOException e){
+                       result_key = checkkey(line);
+                       if(result_key <= 255){
+                          array[result_key][0] += result;
+                          array[result_key][1] += 1l;
+                       }
+                    }
+           }
+        bufferReader.close(); // Closes the input stream
+        }
+        catch(IOException e){
           	 System.out.println("Error reading in candidate key bytes on file and linecount " + chosenfile + " " + linecount);
              e.printStackTrace(); //It prints a stack trace for this Throwable object on the error output stream that is the value of the field
              System.exit(0);
-          }
+        }
      }
      System.out.println("This is the total of outputs read in " + count);
      sorttimes(array);
      outputplaintext(array, chosenfile, avresult);
-    }
+}
 
 /*To check that the key line will be read, key ranges from 0-255 */
     int checkkey(String line){
@@ -383,9 +422,9 @@ class Caculateresults{
 /*This reads now to find the time measured by the hits and misses */
    int valuesfromlines(String line, int avresult){
           	if(line.startsWith("H")){
-          	  line = line.substring(2);
-                  hit = Integer.parseInt(line);
-                  return 0;
+          	   line = line.substring(2);
+               hit = Integer.parseInt(line);
+               return 0;
             }
             if(line.startsWith("M")){
                 line = line.substring(2);
@@ -418,13 +457,13 @@ class Caculateresults{
          }
          /*This is if the file output is of a candidate key file */
          if(plaintext == false){
-         printoffresults();
-         plaintext = true;
+            printoffresults();
+            plaintext = true;
          }
          else{
          	/*This prints off results for the plaint text bytes */
-         	printoffplainresults();
-         	plaintext = false;
+         	   printoffplainresults();
+         	   plaintext = false;
          }
     }
 
@@ -454,7 +493,8 @@ class Caculateresults{
                writer.println();
                }
                writer.close();
-       }catch(IOException e){
+       }
+       catch(IOException e){
        	      System.out.println("Issue outputting file for candidate key caculations");
               e.printStackTrace();
               System.exit(0);
@@ -473,44 +513,44 @@ class Caculateresults{
 
 /*This now caculates the plaintext bytes to see if key information can be deduced */
     void outputplaintext(Long[][] array, ArrayList<File> chosenfile, int avresult){
-        System.out.println("The system will go through and average encryption time for each plaintext byte");
+       System.out.println("The system will go through and average encryption time for each plaintext byte");
         /*Set all values back to 0 */
-        for(int i = 0; i<256;  i++){
-         for(int x = 0; x<2; x++){
-            array[i][x] = 0l;
-         }
-        }
+       for(int i = 0; i<256;  i++){
+            for(int x = 0; x<2; x++){
+                array[i][x] = 0l;
+            }
+       }
        int linecount;
        int count = 0;
        int result_time = 0;
        int result_plain = 0;
        Long result = 0l;
        boolean ophit;  /*To ensure the first hit is read in as optimal hit */
-       for (File filename : chosenfile) {
-        if(chosenfile.size() == 0){
-            continue;
-        }
+       for(File filename : chosenfile) {
+            if(chosenfile.size() == 0){
+               continue;
+            }
        linecount = 0;
-        try{
+       try{
           FileReader inputFile = new FileReader(filename);
           BufferedReader bufferReader = new BufferedReader(new FileReader(filename));
           String line;
           while ((line = bufferReader.readLine()) != null){
-             linecount++;
-             if(linecount > 5){ /*So preceding optimal time data is not read */
-               result_time = valuesfromlines(line, avresult);
-               if(result_time > 0){
-                  result = new Long(result_time);
+                  linecount++;
+                  if(linecount > 5){ /*So preceding optimal time data is not read */
+                     result_time = valuesfromlines(line, avresult);
+                     if(result_time > 0){
+                        result = new Long(result_time);
+                     }
+                  result_plain = checkplain(line);
+                  if(result_plain <= 255){
+                     array[result_plain][0] += result;
+                     array[result_plain][1] += 1l;
+                  }
                 }
-               result_plain = checkplain(line);
-               if(result_plain <= 255){
-                  array[result_plain][0] += result;
-                  array[result_plain][1] += 1l;
-               }
-             }
-            }
-           bufferReader.close(); // Closes the input stream
-           }
+          }
+          bufferReader.close(); // Closes the input stream
+       }
        catch(IOException e){
        	     System.out.println("Error reading in plaintext bytes on file and line count " + chosenfile  + " " + linecount);
              e.printStackTrace(); //It prints a stack trace for this Throwable object on the error output stream that is the value of the field
@@ -518,11 +558,11 @@ class Caculateresults{
        }
      }
      sorttimes(array);
-   }
+  }
 
     /*This reads the plaintext byte value */
     int checkplain(String line){
-    	int result = 256;
+    	  int result = 256;
         if(line.startsWith("P")){
            line = line.substring(2);
            result = Integer.parseInt(line);

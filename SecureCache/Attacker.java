@@ -40,7 +40,7 @@ void begin(ArrayList<Integer> plaintext, int numSet, int numBlock, int input, in
 /*From the outputted file after the filetrimmer getting the address stream */
 void readfile(){
     ArrayList<String> listoffiles = new ArrayList<String>();
-    File dir = new File("/home...");
+    File dir = new File("/home/tf75/Downloads/updated28022018-Software-Simulator-for-Side-Channel-Attacks-Evict-and-Time--master/HexOutput");
     File[] files = dir.listFiles();
     Arrays.sort(files); /*list.files() does not save files in particular order so this function sorts them numerically */
     for (File filename : files){
@@ -163,7 +163,7 @@ void runattack(int loopnum){
           System.exit(0);
        }
        int line = 0;
-       String fileDir = "/home/tf75/Documents/Master's project/Securecache/output";
+       String fileDir = "/home/tf75/Downloads/updated28022018-Software-Simulator-for-Side-Channel-Attacks-Evict-and-Time--master/output";
        String fileName = "result" + new SimpleDateFormat("yyyy.MM.dd.HHmmss.SS!").format(new Date()) + num;
        File f = new File (fileDir,fileName);
        try{

@@ -66,7 +66,7 @@ class Input{
 		 int total = 0;
      System.out.println("This will now read all the plaintext bytes in the file plaintext.txt");
      try{
-         	    String fileDir = "/home/index/plaintext";
+         	    String fileDir = "/home/tf75/Downloads/updated28022018-Software-Simulator-for-Side-Channel-Attacks-Evict-and-Time--master/plaintext";
               String fileName = "plaintext.txt"; /*This copies all the plaintext bytes into one array list */
               File f = new File (fileDir,fileName);
               Scanner scanner = new Scanner(f);
@@ -116,7 +116,7 @@ class Input{
   /*This checks that all files within the memory trace folder are of hexadecimal addresses */
   void checkfiles(){
   	System.out.println("The hex files will now be parsed");
-    File directory = new File("/home/index");
+    File directory = new File("/home/tf75/Downloads/updated28022018-Software-Simulator-for-Side-Channel-Attacks-Evict-and-Time--master/HexOutput");
     File files[] = directory.listFiles();
     for(File filename : files) {
         try{

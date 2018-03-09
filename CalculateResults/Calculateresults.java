@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.text.SimpleDateFormat;
 import java.util.stream.Collectors;
 
-class Caculateresults{
+class Calculateresults{
 
 
     /*The 16 list files each outputting results for 0-15 of the plaintext values */
@@ -34,27 +34,26 @@ class Caculateresults{
 
 
 	public static void main(String[] args){
-	 Caculateresults result = new Caculateresults();
+	 Calculateresults result = new Calculateresults();
 	 result.sortoutput();
-	}
+ }
 
 /*All output files from attacker are read in and processed according to the number following the ! */
 	void sortoutput(){
 	    System.out.println("It will separate files according to plaintext byte number");
-      File dir = new File("/home/...");
+      File dir = new File("/home/");
       File[] files = dir.listFiles();
       String name = "";
       int position = 0;
       Arrays.sort(files); /*list.files() does not save files in particular order so this function sorts them numerically */
-      for(int x = 1; x>16; x++){
+      for(int x = 1; x<17; x++){
           String countnum = Integer.toString(x);
           for(File filename : files){
-      	      name = filename.getName();
-      	      position = name.indexOf( '!' );
-      	      name = name.substring(position+1);
-              if(name != countnum){
-              }
-              else{
+            name = filename.getName();
+            position = name.indexOf( '!' );
+            name = name.substring(position+1);
+            if(name.equals(countnum)){
+              System.out.println(name + countnum);
       	           switch(name){
       	  	             case "1":
       	  	             filearray.add(filename);
@@ -125,7 +124,7 @@ class Caculateresults{
       	      }
            }
            }
-      gothroughlists(x);
+        gothroughlists(x);
       }
     }
 
@@ -473,7 +472,7 @@ class Caculateresults{
        System.out.println("This will now print the file of results that were above average execution time for key bytes");
        int line = 0;
        String printed = "";
-       String fileDir = "/home..";
+       String fileDir = "/home/";
        String fileName = "analysis" + outputnum + ".txt";
        File f = new File (fileDir, fileName);
        try{
@@ -576,7 +575,7 @@ class Caculateresults{
        System.out.println("This will now print the file of results that were above average execution time for plaintext");
        int line = 0;
        String printed = "";
-       String fileDir = "/home/...";
+       String fileDir = "/home/";
        String fileName = "plainanalysis" + outputnum + ".txt";
        File f = new File (fileDir, fileName);
        try{

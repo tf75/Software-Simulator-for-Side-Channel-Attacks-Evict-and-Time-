@@ -41,7 +41,7 @@ class Attacker {
 /*From the outputted file after the filetrimmer getting the address stream */
   void readfile(){
     ArrayList<String> listoffiles = new ArrayList<String>();
-    File dir = new File("/home/index");
+    File dir = new File("/home/");
     File[] files = dir.listFiles();
     Arrays.sort(files); /*list.files() does not save files in particular order so this function sorts them numerically */
     for (File filename : files) {

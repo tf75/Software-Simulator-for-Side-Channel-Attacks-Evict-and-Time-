@@ -65,7 +65,9 @@ class SetCache{
      }
     /*This is to ensure that hits and misses are equal to the address size for testing */
     if((hit + necessarymiss + capacitymiss) != addressstream.size()){
-       System.out.println("There is too few or many hits and misses for this address stream");
+       System.out.println("There is too few or many hits and misses for this address stream of " + addressstream.size());
+       System.out.println("This is number of hits " + hit + " " + "Number of necessary misses " + necessarymiss + " " + "Number of capacity misses " + capacitymiss);
+
        System.exit(0);
     }
     assert((hit + necessarymiss + capacitymiss) == addressstream.size());
@@ -97,10 +99,7 @@ class SetCache{
    void hitandmiss(int tag, int set){
       /*This checks whether there is a space not filled yet or if the tag is present */
       Boolean capacity = true;
-      capacity = hit(tag, set);
-      if(capacity){
-        capacity = miss(tag, set);
-      }
+      capacity = checkhitmiss(tag, set);
       /*This means the tag is not in the set and is added at the back MRU */
       if(capacity){
         assert(capacity == true);
@@ -111,53 +110,30 @@ class SetCache{
       }
    }
 
-   boolean hit(int tag, int set){
-        boolean capacity = true;
-        for(int x = 0; x < setassoc; x++){
-          /*Place the MRU at the back of the queue for eviction */
-          if(memcache.get(set).get(x) == tag){
-             reverseorder(x, set, tag);
-             hit++;
-             capacity = false;
-          }
-       }
-       return capacity;
-   }
 
-   boolean miss(int tag, int set){
+   boolean checkhitmiss(int tag, int set){
      boolean capacity = true;
-     for(int x = 0; x < setassoc; x++){
-         if(memcache.get(set).get(x) == null){
-      /*This checks that the address is not been put at the back of the queue, MRU policy */
-           boolean present = checkqueue(set, tag);
-           if(present){
-             capacity = false;
-           }
-           else{
+     int y;
+     /*This checks that the address is in the set, MRU policy */
+     if(memcache.get(set).contains(tag) == true){
+       y = memcache.get(set).indexOf(tag);
+       reverseorder(y, set, tag);
+       hit++;
+       capacity = false;
+     }
+     else{
+         for(int x = 0; x < setassoc; x++){
+          if(memcache.get(set).get(x) == null){
                 memcache.get(set).set(x, tag);
       /*This is a necessary miss as the cache has an empty block */
                 necessarymiss++;
                 capacity = false;
+                break;
            }
-        }
-    }
+         }
+      }
     return capacity;
   }
-
-   /*This checks that the tag is not placed at the back of the queue */
-   boolean checkqueue(int set, int tag){
-     for(int x = setassoc-1; x > 0; x--){
-         if(memcache.get(set).get(x) == null){
-           return false;
-         }
-         if(memcache.get(set).get(x) == tag){
-            reverseorder(x, set, tag);
-            hit++;
-            return true;
-         }
-     }
-     return false;
-   }
 
 /*This returns an int that tells where the set should be located */
    int return_set(Long address){

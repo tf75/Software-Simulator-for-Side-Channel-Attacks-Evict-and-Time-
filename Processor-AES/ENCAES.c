@@ -299,7 +299,7 @@ void computetables()
 
 byte plaintext_bytes(){
 	/*this assigns random bytes to the plaintext message*/
-    int randbyte, randcol;
+    int randbyte;
     byte value;
     randbyte = rand()%(255-0) + 0; /*get rand byte from table */
     if(randbyte < 256 && randbyte >= 0){
